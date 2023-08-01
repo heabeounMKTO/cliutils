@@ -13,4 +13,4 @@ clone this repo to your home directory <br>
 export PATH="$HOME/cliutils:$PATH"
 ```
 
-or your custom directory
+> or your custom directory
