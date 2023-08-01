@@ -18,7 +18,9 @@ fi
 clear;
 echo "$(gum style --foreground 212 --background 62 'Summary of your changes sir')"
 SUMMARY=$(gum input --value "$TYPE :" --placeholder "")
-DESCRIPTION=$(gum write --placeholder "Details, if you care to elaborate")
+clear;
+echo "$(gum style --foreground 212 --background 62 'Commit details, sir (ctrl-c to end)')"
+DESCRIPTION=$(gum write --placeholder "")
 
-gum confirm "Commit changes right now sir?" && git commit -m "$SUMMARY" -m "$DESCRIPTION"
-gum confirm "Do you want to push to remote?" && git push
+COMMIT=$(gum confirm "Commit changes right now sir?" && git commit -m "$SUMMARY" -m "$DESCRIPTION")
+gum confirm "push to remote?" && git push
