@@ -23,4 +23,4 @@ echo "$(gum style --foreground 212 --background 62 'Commit details, sir (ctrl-d 
 DESCRIPTION=$(gum write --placeholder "")
 
 COMMIT=$(gum confirm "Commit changes right now sir?" && git commit -m "$SUMMARY" -m "$DESCRIPTION")
-gum confirm "push to remote?" && $(gum spin --title 'pushing to remote' -- git push)
+gum confirm "push to remote?" && $(gum spin --title 'pushing to remote' --show-output -- git push)
