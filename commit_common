@@ -19,7 +19,7 @@ clear;
 echo "$(gum style --foreground 212 --background 62 'Summary of your changes sir')"
 SUMMARY=$(gum input --value "$TYPE :" --placeholder "")
 clear;
-echo "$(gum style --foreground 212 --background 62 'Commit details, sir (ctrl-c to end)')"
+echo "$(gum style --foreground 212 --background 62 'Commit details, sir (ctrl-d to finish)')"
 DESCRIPTION=$(gum write --placeholder "")
 
 COMMIT=$(gum confirm "Commit changes right now sir?" && git commit -m "$SUMMARY" -m "$DESCRIPTION")
