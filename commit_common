@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -z "$(git status -s -uno | grep -v '^ ' | awk '{print $2}')" ]; then
-  gum style --border normal --margin "1" --padding "1 2" --border-foreground 212 "$(gum confirm "are we staging all the changes?" && git add .)"
+  gum confirm "are we staging all the changes?" && git add .
 fi
 
 echo "$(gum style --foreground 212 'what kind of commit would you like to make, sir?')"
@@ -23,4 +23,4 @@ echo "$(gum style --foreground 212 --background 62 'Commit details, sir (ctrl-d 
 DESCRIPTION=$(gum write --placeholder "")
 
 COMMIT=$(gum confirm "Commit changes right now sir?" && git commit -m "$SUMMARY" -m "$DESCRIPTION")
-gum confirm "push to remote?" && $(gum spin --title 'pushing to remote'  --show-output git push)
+gum confirm "push to remote?" &&  git push
