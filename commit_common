@@ -21,6 +21,6 @@ SUMMARY=$(gum input --value "$TYPE :" --placeholder "")
 clear;
 echo "$(gum style --foreground 212 --background 62 'Commit details, sir (ctrl-d to finish)')"
 DESCRIPTION=$(gum write --placeholder "")
-
+clear;
 COMMIT=$(gum confirm "Commit changes right now sir?" && git commit -m "$SUMMARY" -m "$DESCRIPTION")
 gum confirm "push to remote?" &&  git push
