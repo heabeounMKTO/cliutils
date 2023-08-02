@@ -1,0 +1,5 @@
+#!/bin/bash
+
+gum style --border normal --margin "1" --padding "1 2" --border-foreground 212 "QUICKSHITPOST"
+IMGPATH=$(gum input --placeholder 'path to the image file')
+POSTTITLE=$(gum input --placeholder 'post title?')

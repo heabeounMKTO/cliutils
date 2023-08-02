@@ -15,10 +15,17 @@ class shitpost():
         self.bottom_text = bottom_text
 
     def deep_fry(self):
+        clipLimit = 20
+        tileGridSize = (8,8)
         self.img_src = cv2.cvtColor(self.img_src, cv2.COLOR_BGR2HSV)
-        greenMask = cv2.inRange(self.img_src, (128, 110, 30), (97, 100, 255))
-        self.img_src[:,:,1] = greenMask
-        self.img_src = cv2.cvtColor(self.img_src, cv2.COLOR_HSV2BGR)
+        lab = cv2.cvtColor(self.img_src, cv2.COLOR_BGR2LAB)
+        lChan,aChan,bChan = cv2.split(lab)            #split channels
+        clahe = cv2.createCLAHE(clipLimit=clipLimit, tileGridSize=tileGridSize) #create CLAHE or Contrast Limited Auto Histogram Equalization object 
+        cl=clahe.apply(lChan) #apply CLAHE
+        limg = cv2.merge((cl,aChan,bChan))   #merge channgles back
+        self.img_src = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)   #convert back to BGR for opencv
+        self.write_shitpost2file()
+
     def compute_textPos(self):
         print(self.img_src.shape)
 
